@@ -18,40 +18,65 @@
 let nombre_usuario , nombre_usuario_compr
 Usuario();
 
-function error_mensaje(){
-    alert ("¡Disculpe, el usuario no cumple con los requisitos.  Por favor ingrese nuevamente!");
-    Usuario ();
-}
-
 function Usuario(){
-nombre_usuario = prompt (`¡Bienvenido! Por favor, ingrese el nombre del usuario a registrar
+
+nombre_usuario = prompt (`INGRESO DE DATOS
+
+¡Bienvenido! Por favor, ingrese el nombre del usuario a registrar
 recuerde que debe cumplir con lo siguiente:
 
         1. Debe comenzar con "@"
         2. Debe terminar con "$"
-        3. Debe tener entre 5 y 10 caractéres`);
+        3. Debe tener entre 8 y 10 caractéres`);
+if (nombre_usuario === null){
+        close();
+    }   
 
+nombre_usuario_compr = prompt (`RECTIFICACIÓN DE DATOS
 
-nombre_usuario_compr = prompt (`Por favor ingrese nuevamente su usuario.  ¡Recuerde!
+Por favor ingrese nuevamente su usuario.  ¡Recuerde!
 
         1. Debe comenzar con "@"
         2. Debe terminar con "$"
-        3. Debe tener entre 5 y 10 caractéres`);
-        
+        3. Debe tener entre 8 y 10 caractéres`);
+
+
     if (nombre_usuario === nombre_usuario_compr){
             if (nombre_usuario.startsWith("@")) {
                 if (nombre_usuario.endsWith ("$")) {
-                    if ((nombre_usuario.length >= 5 || nombre_usuario_compr <= 15)) {
-                        alert(`El usuario a sido agregado correctamente`);
-                        reingresar_usuario();
+                    if (nombre_usuario.length <=15 ) {
+                        if (nombre_usuario.length >= 8) {
+                            alert(`¡Felicidades!
+    El usuario a sido agregado correctamente`);
+                            reingresar_usuario();    
+                        }else{
+                            alert(`¡ATENCIÓN!
+¡El usuario no cumple con los requisitos, pulse aceptar para intentar de nuevo!`);
+            Usuario();
                         }
+
+                    }else{
+                            alert(`¡ATENCIÓN!
+¡El usuario no cumple con los requisitos, pulse aceptar para intentar de nuevo!`);
+            Usuario();
+                        }
+                }else{
+                    alert(`¡ATENCIÓN!
+¡El usuario no cumple con los requisitos, pulse aceptar para intentar de nuevo!`);
+            Usuario();
                 }
+            }else{
+                alert(`¡ATENCIÓN!
+¡El usuario no cumple con los requisitos, pulse aceptar para intentar de nuevo!`);
+            Usuario();
             }
         }else{
-            alert(`El usuario no cumple con los requisitos minimos, pulse aceptar para intentar de nuevo`);
+            alert(`¡ATENCIÓN!
+¡El usuario no cumple con los requisitos, pulse aceptar para intentar de nuevo!`);
             Usuario();
         }
 };
+
 
 function reingresar_usuario(){
     let respuesta_usuario = +prompt (`¿Desea ingresar otro usuario?
@@ -62,6 +87,13 @@ function reingresar_usuario(){
                 Usuario ();
                 break;
             case 2:
-                break;    
+                alert("Gracias por usar el programa, hasta pronto ✌")
+                close();
+                break;
+            default:
+                alert(`Disculpe la opción ingresada no es valida, pulse "aceptar" para continuar`)
+                reingresar_usuario();
+                break;
+
     }
 }
